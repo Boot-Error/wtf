@@ -2,12 +2,17 @@ package prettyweather
 
 import (
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 
 	"github.com/rivo/tview"
 	"github.com/wtfutil/wtf/view"
 	"github.com/wtfutil/wtf/wtf"
+
+	_ "github.com/schachmat/wego/backends"
+	wefe "github.com/schachmat/wego/frontends"
+	"github.com/schachmat/wego/iface"
 )
 
 type Widget struct {
@@ -28,9 +33,38 @@ func NewWidget(app *tview.Application, settings *Settings) *Widget {
 }
 
 func (widget *Widget) Refresh() {
-	widget.prettyWeather()
+
+	widget.prettyWeather2()
 
 	widget.Redraw(func() (string, string, bool) { return widget.CommonSettings().Title, widget.result, false })
+}
+
+func (widget *Widget) prettyWeather2() {
+
+	be, ok := iface.AllBackends[widget.settings.backend]
+	if !ok {
+		log.Fatalf("Could not find selected backend \"%s\"", widget.settings.backend)
+	}
+	be.Setup()
+
+	fe, _ := &wefe.aatConfig{}
+	fe.Setup()
+
+	r := be.Fetch(widget.settings.city, 0)
+
+	unit := iface.UnitsMetric
+	if widget.settings.unit == "imperial" {
+		unit = iface.UnitsImperial
+	} else if widget.settings.unit == "si" {
+		unit = iface.UnitsSi
+	} else if widget.settings.unit == "metric-ms" {
+		unit = iface.UnitsMetricMs
+	}
+
+	out := fe.formatCond(make([]string, 5), r.Current, true)
+
+	widget.result = strings.TrimSpace(wtf.ASCIItoTviewColors(strings.Join(out, "\n")))
+
 }
 
 //this method reads the config and calls wttr.in for pretty weather

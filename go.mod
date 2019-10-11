@@ -44,6 +44,7 @@ require (
 	github.com/jessevdk/go-flags v1.4.0
 	github.com/json-iterator/go v1.1.7 // indirect
 	github.com/logrusorgru/aurora v0.0.0-20190428105938-cea283e61946
+	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/microsoft/azure-devops-go-api/azuredevops v0.0.0-20191008140207-e35debc23688
 	github.com/mmcdole/gofeed v1.0.0-beta2.0.20190420154928-0e68beaf6fdf
@@ -56,6 +57,8 @@ require (
 	github.com/radovskyb/watcher v1.0.7
 	github.com/rivo/tview v0.0.0-20190829161255-f8bc69b90341
 	github.com/rivo/uniseg v0.1.0 // indirect
+	github.com/schachmat/ingo v0.0.0-20170403011506-a4bdc0729a3f // indirect
+	github.com/schachmat/wego v0.0.0-20190211190709-994e4f141759
 	github.com/shirou/gopsutil v2.19.9+incompatible
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/sticreations/spotigopher v0.0.0-20181009182052-98632f6f94b0
@@ -69,6 +72,7 @@ require (
 	golang.org/x/crypto v0.0.0-20191010185427-af544f31c8ac // indirect
 	golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297 // indirect
 	golang.org/x/oauth2 v0.0.0-20190614102709-0f29369cfe45
+	golang.org/x/sys v0.0.0-20191010194322-b09406accb47 // indirect
 	golang.org/x/time v0.0.0-20190921001708-c4c64cad1fd0 // indirect
 	google.golang.org/api v0.11.0
 	google.golang.org/appengine v1.6.5 // indirect

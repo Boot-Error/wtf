@@ -17,6 +17,8 @@ type Settings struct {
 	unit     string
 	view     string
 	language string
+	backend  string
+	apiKey   string
 }
 
 func NewSettingsFromYAML(name string, ymlConfig *config.Config, globalConfig *config.Config) *Settings {
